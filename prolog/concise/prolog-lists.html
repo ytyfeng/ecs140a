@@ -1,0 +1,82 @@
+<html>
+<head><title>Prolog: Lists And Strings</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+<h2>Lists and strings</h2>
+
+<code>[]</code> is the empty list; <code>[a, 2+2, [5]]</code> is the
+list containing the three elements <code>a</code>, <code>2+2</code>,
+and <code>[5]</code>.  <code>[Head | Tail]</code> is the list whose
+first element is <code>Head</code> and whose <i>tail</i> (list of
+remaining elements) is <code>Tail</code>.  <code>[a, X, c |
+Tail]</code> is the list whose first three elements are
+<code>a</code>, <code>X</code>, and <code>c</code>, and whose
+remaining elements are given by the list <code>Tail</code>.  Only one
+term may follow the ``<code>|</code>'': <code>[a | X, Y]</code> and
+<code>[a | X | Y]</code> are syntactic nonsense.<p>
+
+Unification can be performed on lists:
+
+<code>
+<pre>	[a, b, c] = [Head | Tail].	/* a = Head, [b, c] = Tail. */
+	[a, b] = [A, B | T].	/* a = A, b = B, [] = Tail. */
+	[a, B | C] = [X | Y].	/* a = X, [B | C] = Y. */
+</pre>
+</code>
+
+In most (but not all) Prolog systems, the list notation is syntactic
+sugar for the '.' functor, with the equivalence: <code>'.'(Head, Tail)
+= [Head | Tail]</code>.<p>
+
+Two useful predicates are <code>member/2</code>, which succeeds when
+its first argument is a member of the list that is its second
+argument, and <code>append/3</code>, which is true when the third
+argument is the list formed by appending the first two lists.
+<em>Neither is predefined.</em> Definitions are:
+
+<code>
+<pre>	member(A, [A | _]).
+	member(A, [_ | B]) :- member(A, B).
+
+	append([A | B], C, [A | D]) :- append(B, C, D).
+	append([], A, A).
+</pre>
+</code>
+
+The operator ``<code>=..</code>'', pronounced ``univ,'' succeeds when
+its left argument is a structure and its right argument is the
+corresponding list [Functor | Args].<p>
+
+Example:  <code>mother(M, bill) =.. [mother, M, bill]</code>.<p>
+
+A double-quoted character string is syntactic sugar for a list of the
+ASCII codes for those characters.<p>
+
+Example:  <code>"abc" = [97,98,99]</code>.<p>
+
+The predicate <code>name/2</code> succeeds if its first argument is
+the atom formed from the string that is its second argument.<p>
+
+Example:  <code>name(abc, "abc")</code>.<p>
+
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-execution.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-running.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>

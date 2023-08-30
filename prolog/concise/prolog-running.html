@@ -1,0 +1,56 @@
+<html>
+<head><title>Prolog: How to Run</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+
+<h2>How to run Prolog</h2>
+
+How you start Prolog depends on your operating system; try typing
+<code>prolog</code> at the top-level prompt.  Prolog should respond
+with the ``|<code> ?-</code>'' prompt.<p>
+
+To load in predicates from file, use <code>reconsult(<i>FileName</i>)
+or reconsult([<i>FileName1,</i> <i>FileName2,</i> ...])</code>.  If
+one of the files contains a predicate that already occurs in the
+database, it replaces the old definition.  [The similar predicate
+<code>consult</code> adds the new clauses after the existing
+predicates, rather than replacing them.]<p>
+
+To type in predicates directly, use <code>reconsult(user)</code>.  The
+prompt will change from ``<code>| ?-</code>'' to ``|''.  Enter
+predicates as you would on a file.  To quit this mode, enter an
+end-of-file (probably ^D).<p>
+
+``Run'' the program by typing in inquiries at the Prolog prompt.  You
+may call any predicate with any arguments, and you may make multiple
+calls in one inquiry by separating them with commas.  Use a period at
+the end of each inquiry.  There is no ``main'' program.<p>
+
+When Prolog does not give you a new prompt after it answers an
+inquiry, that means there may be other answers.  Enter <pre><code>
+;&lt;return&gt;</code></pre> to tell it to get the next answer, or
+just <code>&lt;return&gt;</code> to tell it you have seen enough.<p>
+
+To begin tracing, use <code>trace</code>; to end tracing, use
+<code>notrace</code>.  To exit Prolog, use <code>halt</code>.<p>
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-lists.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-writing.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>

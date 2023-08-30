@@ -1,0 +1,65 @@
+<html>
+<head><title>Prolog: Unification and Instantiation</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+
+<h2>Unification and instantiation</h2>
+
+Unification and instantiation can be performed explicitly with the '='
+operator, or implicitly via parameter transmission.  Unification is a
+symmetric operation (X=Y is the same as Y=X), and is not the same as
+assignment.<p>
+
+<ol>
+<li>Any value can be unified with itself.  (This is normally
+useful only as a test.)<p>
+
+
+	Example:  <code>mother(john) = mother(john).</code><p>
+
+<li>A variable can be unified with another variable.  The two variable
+names thereafter reference the same variable.<p>
+
+	Example:  <code>X = Y, X = 2, write(Y).   /*  Writes the value 2. */</code><p>
+
+<li>A variable can be unified with any Prolog value; this is called
+<i>instantiating</i> the variable.  A variable is <i>fully
+instantiated </i>if it is unified with a value that does not itself
+contain variables.<p>
+
+	Example:  <code>X = foo(bar, [1, 2, 3]).  /* X is fully instantiated. */</code>
+	<br>Example:  <code>Pa = husband(Ma).         /* Pa is partially instantiated. */</code> <p>
+
+<li>Two different values can be unified if there are unifications for
+the constituent variables which make the values the same.<p>
+
+	Example:  <code>mother(mary, X) = mother(Y, father(Z)).</code><br>
+	[Also results in the unifications <code>mary=Y</code> and <code>X=father(Z)</code>].<p>
+
+<li>It is legal to unify a variable with an expression containing
+itself; however, the resultant value cannot be printed, and must
+otherwise be handled with extreme care.<p>
+
+	Example:  <code>X = foo(X, Y).</code><p>
+</ol>
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-syntax.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-variables.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>

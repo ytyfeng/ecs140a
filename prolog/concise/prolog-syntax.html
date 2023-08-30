@@ -1,0 +1,92 @@
+<html>
+<head><title>Prolog: Approximate Syntax</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+<h2>Prolog syntax (approximate)</h2>
+
+A program, or <i>database,</i> in Prolog consists of one or more
+<i>predicates;</i> each predicate consists of one or more
+<i>clauses.</i> A clause is a <i>base clause</i> if it is
+unconditionally true, that is, it has no ``if part.''<p>
+
+<pre>
+<code>	&lt;program&gt; ::= &lt;predicate&gt; | &lt;program&gt;&lt;predicate&gt;
+
+	&lt;predicate&gt; ::= &lt;clause&gt; | &lt;predicate&gt;&lt;clause&gt;
+
+	&lt;clause&gt; ::= &lt;base clause&gt; | &lt;nonbase clause&gt;
+</code>
+</pre>
+
+Two clauses belong to the same predicate if they have the same
+<i>functor</i> (name) and the same <i>arity</i> (number of arguments).
+Thus, <code>mother(jane)</code> and <code>mother(jane, jim)</code> are
+different predicates.<p>
+
+<pre>
+<code>	&lt;base clause&gt; ::= &lt;structure&gt; <b>.</b>
+
+	&lt;nonbase clause&gt; ::= &lt;structure&gt; <b>:-</b> &lt;structures&gt; <b>.</b>
+
+	&lt;structures&gt; ::= &lt;structure&gt; | &lt;structure&gt; <b>,</b> &lt;structures&gt;
+</code>
+</pre>
+
+A <i>structure</i> is a functor followed by zero or more arguments;
+the arguments are enclosed in parentheses and separated by commas.
+<i>There must be no space between the functor and the opening
+parenthesis!</i> If there are no arguments, the parentheses are
+omitted.<p>
+
+<pre>
+<code>
+	&lt;structure&gt; ::= &lt;name&gt; | &lt;name&gt; ( &lt;arguments&gt; )
+
+	&lt;arguments&gt; ::= &lt;argument&gt; | &lt;argument&gt; <b>,</b> &lt;arguments&gt;
+
+</code></pre>
+Arguments may be any legal Prolog values or variables.<p>
+
+A <i>variable</i> is written as a sequence of letters and digits,
+beginning with a capital letter. The underscore (_) is considered to
+be a capital letter.<p>
+
+An <i>atom</i> is any sequence of letters and digits, beginning with a
+lowercase letter.  Alternatively, an atom is any sequence of
+characters, enclosed by single quotes ('); an internal single quote
+must be doubled.  Examples: <code>cat</code>, <code>r124c41</code>,
+<code>max_value</code>, <code>maxValue</code>, <code>'max
+value'</code>, <code>'Don''t go'</code>.<p>
+
+As syntactic sugar, Prolog allows certain infix operators: ','
+(comma), ';' (semicolon), ':-' (turnstile), +, -, *, /, =, ==, and
+many others.  These are the same as the operator written as the
+functor of a structure; for example, <code>2+2 is the same as
+'+'(2,2)</code>.<p>
+
+<i>Comments</i> begin with the characters <code>/*</code> and end with
+<code>*/</code>. Comments are not restricted to a single line, but may
+not be nested.<p>
+
+Example: <code>/* This is a comment. */</code><br><br>
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-first-look.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-unification.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>

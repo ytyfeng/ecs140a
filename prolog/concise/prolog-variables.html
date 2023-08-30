@@ -1,0 +1,46 @@
+<html>
+<head><title>Prolog: Variables</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+<h2>Variables</h2>
+
+A <i>variable</i> is written as a sequence of letters and digits,
+beginning with a capital letter.  The underscore (_) is considered to
+be a capital letter.  Examples: <code>X2</code>, <code>Max</code>,
+<code>This_node</code>, <code>ThisNode</code>.<p>
+
+Prolog variables are similar to ``unknowns'' in algebra: Prolog tries
+to find values for the variables such that the entire clause can
+succeed.  Once a value has been chosen for a variable, it cannot be
+altered by subsequent code; however, if the remainder of the clause
+cannot be satisfied, Prolog may backtrack and try another value for
+that variable.<p>
+
+The <i>anonymous variable</i> consists of a single underscore.  Each
+occurrence of the anonymous variable is considered to be a new,
+distinct variable (i.e. different occurrences may have different
+values).<p>
+
+The scope of a variable name is the clause in which it occurs. There
+are no ``global'' variables.<p>
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-unification.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-execution.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>

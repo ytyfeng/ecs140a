@@ -1,0 +1,126 @@
+<html>
+<head><title>Prolog: How to Write Programs</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+<h2>How to write Prolog programs</h2>
+
+Prolog is a notation for stating logical relations that happens to be
+executable.  It has few control structures, because it is very
+difficult to assign meanings to control structures.  Accordingly, you
+should try to learn how to write declarative programs.  Avoid using
+the control structures listed below.  If you find Prolog frustrating
+and difficult, you are probably still programming procedurally.<p>
+
+A Prolog predicate consists of multiple clauses.  It is useful to
+think of each clause as coding a separate ``case''--first describe
+what constitutes the case, then describe the result for that case.
+For example, the absolute value of a number is (1) the negation of the
+number, if it is negative, or (2) the number itself, if it isn't
+negative.<p>
+
+<code><pre>	abs(X, Y) :- X &lt; 0, Y is -X.
+	abs(X, X) :- X &gt;= 0.</pre></code>
+
+If a case has subcases, feel free to invent another predicate to deal
+with the subcases.<p>
+
+Remember that parameter transmission is by unification.  You can do a
+lot of your work right in the parameter list.  For example:
+
+<pre><code>	second([_, X | _], X).	/* 2nd argument is 2nd element of list. */
+</code></pre>
+
+You can often simplify code by writing parameters that match only the
+specific case you are interested in.  See <code>member</code> and
+<code>append</code> for examples.  (Note: when you must program
+procedurally, by convention the ``result'' is the last argument.)<p>
+
+Recursion is fully supported.  In other languages you must always test
+for the base case first; in Prolog, the base case can (and should) go
+last, if it is such that the more general clauses will fail--see
+<code>append</code>.  If the predicate is to fail in the base case, it
+can (and should) be omitted; for example, the base case for
+<code>member</code> is the unnecessary clause:
+
+<pre>	<code>member(_, []) :- fail.	/* No 1st parameter is a member of [] */</code></pre>
+
+You can't keep a value for future use by ``assigning it to a
+variable.''  If it is temporary, local information, you can pass it
+around as a parameter; if it is relatively permanent information that
+should be globally accessible, you can put it in the database (see
+<code>assert</code> and <code>retract</code> below).  Prolog has no
+functions, so ``results'' must be returned by instantiating one or
+more parameters.<p>
+
+Many predicates can be used as generators, to generate one solution
+after another until later conditions are met.  For example,
+
+<pre>	<code>member(X, [1, 2, 3, 4, 5]), X &gt; 3.</code></pre>
+
+succeeds and instantiates <code>X</code> to <code>4</code>.  If backed
+into, it re-instantiates <code>X</code> to <code>5</code>.  (But if
+you think declaratively, this just says ``<code>X</code> is a member
+of the list <code>[1, 2, 3, 4, 5]</code> that is greater than
+<code>3</code>.'')<p>
+
+When one clause fails, the next one is tried.  If you want the failure
+of a clause to cause the failure of the entire predicate, you can use
+a cut-fail combination:
+
+<pre><code>	sqrt(X, RootX) :- X &lt; 0, !, fail.
+	</code><i>(more clauses of sqrt should follow)</i></pre>
+
+This is a procedural shortcut that avoids the necessity of having
+<code>X &lt;= 0</code> in every clause; it is justified only if the
+test is complex and there are many clauses.<p>
+
+Arithmetic is performed only upon request.  For example,
+<code>2+2=4</code> will fail, because <code>4</code> is a number but
+<code>2+2</code> is a structure with functor '+'.  Prolog cannot work
+arithmetic backwards; the following definition of square root ought to
+work when called with <code>sqrt(25, R)</code>, but it doesn't.<p>
+
+<pre>	<code>sqrt(X, Y) :- X is Y * Y.	/* Requires that Y be instantiated. */</code></pre>
+
+Arithmetic is procedural because Prolog isn't smart enough to solve
+equations, even simple ones.  This is a research area.<p>
+
+It is possible to build a so-called <i>fail loop</i> in Prolog.  Such
+a loop has the form <i>generate-process-test;</i> the loop repeats if
+the test fails.  For example, the following will print the elements of
+a list, one per line:
+
+<pre>	<code>print_elements(List) :- member(Element, List), write(Element), nl, fail.</code></pre>
+
+However, if the processing is at all complex, it may be difficult to
+backtrack over it safely.  Tail recursion is safer, cleaner, and
+usually more efficient:
+
+<pre>	<code>print_elements([Head | Tail]) :- write(Head), nl, print_elements(Tail).</code></pre>
+
+Both of these fail after printing the list.  If this is undesirable
+(and it probably is), a simple idiom is to add another clause whose
+purpose is to unconditionally succeed after the first clause is done:
+
+<pre>	<code>print_elements(_).</code></pre>
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-running.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-builtins.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>

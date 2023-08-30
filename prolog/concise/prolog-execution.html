@@ -1,0 +1,70 @@
+<html>
+<head><title>Prolog: Execution</title>
+<link rev="made" "href="mailto:dave@vfl.paramax.com">
+</head>
+<body bgcolor=white>
+<h2>Prolog execution</h2>
+
+Most Prolog clauses have both a <i>declarative reading</i> and a
+procedural reading.  Whenever possible, the declarative reading is to
+be preferred.<p>
+
+<pre><code>	mother(X, Y) :- parent(X, Y), female(X).</code></pre>
+
+Declarative reading: <code>X</code> is the mother of <code>Y</code>
+<em>if</em> <code>X</code> is a parent of <code>Y</code> <em>and</em>
+<code>X</code> is female.<p>
+
+Approximate procedural reading: To show that <code>X</code> is the
+mother of <code>Y</code>, first show that <code>X</code> is a parent
+of <code>Y</code>, then show that <code>X</code> is female.<p>
+
+Suppose we have the additional base clauses:
+<pre>
+<code>	parent(john, bill).
+	parent(jane, bill).
+	female(jane).
+</code>
+</pre>
+Now if we inquire:
+
+<pre><code>	| ?- mother(M, bill).</code></pre>
+
+the clause of <code>mother/2</code> will be located, and the
+unifications <code>X=M, Y=bill</code> will occur.  (Parameter
+transmission is by unification.) Then <code>parent(M, bill)</code>
+will be attempted, resulting in the unification <code>M=john</code>.
+Next, <code>female(john)</code> will be attempted, but will fail.
+Prolog will backtrack to <code>parent(M, bill)</code> and look for
+another solution for this; it will succeed and unify
+<code>M=jane</code>.  Finally, it will attempt
+<code>female(jane)</code>, and succeed; so the inquiry will succeed,
+having performed the unification <code>M=jane</code>.<p>
+
+Typically Prolog predicates work regardless of which arguments are
+instantiated, and may instantiate the others.  Thus
+<code>mother/2</code> works equally well for the calls
+<code>mother(jane,C)</code>, <code>mother(M,C)</code>, and<code>
+mother(jane,bill)</code> [but the procedural reading is different in
+each case.]  Injudicious use of control predicates, particularly
+``cut,'', can destroy this property.<p>
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-variables.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=center>
+  <a href="prolog.html">
+  <img src="up-arrow.gif" border=0 alt="Table of contents"><br></a></td>
+<td align=right>
+  <a href="prolog-lists.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+
+</body>
+</html>
