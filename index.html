@@ -1,8 +1,16 @@
 ---
 layout: default
-title: ECS 140A Programming Languages Discussion 
+title: ECS 140A Programming Languages 
 ---
 
 Here you will find code and resources for Discussion.
 
 
+{% assign doclist = site.static_files | sort: 'url'  %}
+    <table>
+       {% for doc in doclist %}
+       		<tr>
+    		<td><a href="{{ doc.path }}">{{ doc.path }}</a></td></tr>
+    		<tr><td>{{ doc.modified_time }}</td></tr>
+    	{% endfor %}
+    </table>

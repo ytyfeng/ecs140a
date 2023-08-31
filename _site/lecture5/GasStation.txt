@@ -1,0 +1,37 @@
+ECS 140A Programming Languages  Lecture 5   08/16/2023
+tyfeng.com/ecs140a
+
+
+Practice Problem 1: GasStation
+
+As part of a simulation of the behavior of gas stations, you are to create a class definition called GasStation. Each object of the GasStation class keeps track of how many litres of gasoline are available at that gas station, represented as an integer. A GasStation object also has a method to simulate the dispensing of some number of litres of gasoline. That method, called dispenseGas(), reduces the amount of gasoline available at that gas station by the number of litres dispensed, assuming there are at least as many litres available as the number of litres to be dispensed. If the number of litres of gasoline to be dispensed is greater than the number of litres available, then no gasoline is dispensed. Another method, called getAvailableGas(), returns the number of litres of gasoline available at that gas station.
+Every gas station object has 10,000 litres of gasoline when it is created. The dispenseGas() method always dispenses exactly 100 litres of gasoline when it is invoked.
+
+Here's a simple program that we might use to test your GasStation class:
+
+    public class GasStationTester
+    {
+      public static void main (String[] args)
+      {
+        GasStation chevron = new GasStation();
+        GasStation shell = new GasStation();
+        System.out.println("Chevron has " + chevron.getAvailableGas());
+        chevron.dispenseGas(); // 100 litres dispensed
+        chevron.dispenseGas(); // 100 more litres dispensed
+        System.out.println("Chevron has " + chevron.getAvailableGas());
+        System.out.println("Shell has " + shell.getAvailableGas());
+        shell.dispenseGas();   // 100 litres dispensed
+        System.out.println("Shell has " + shell.getAvailableGas());
+      }
+    }
+
+And here's the output we would expect after running this program (assuming of course that everything compiles correctly):
+    > javac GasStation.java
+    > javac GasStationTester.java
+    > java GasStationTester
+    Chevron has 10000
+    Chevron has 9800
+    Shell has 10000
+    Shell has 9900
+
+

@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Prolog: Database Manipulation Predicates</title>
+</head>
+<body bgcolor=white>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<div class="container" style="padding:60px;">
+
+<p><a href="./">< go back</a></p>
+<h3>Database manipulation predicates</h3>
+<dl>
+<dt><a name = "assert"></a><code>assert(X)</code>
+<dd>Add <code>X</code> to the database.  For syntactic reasons, if <code>X</code> is not a base clause, use <code>assert((X))</code>.<p>
+
+<dt><a name = "asserta"></a><code>asserta(X)</code>
+<dd>Add <code>X</code> to the database in front of other clauses of this predicate.<p>
+
+<dt><a name = "assertz"></a><code>assertz(X)</code>
+<dd>Add <code>X</code> to the database after other clauses of this predicate.<p>
+
+<dt><a name = "retract"></a><code>retract(X)</code>
+<dd>Remove X from the database.  For syntactic reasons, if <code>X</code> is not a base clause, use <code>retract((X))</code>.<p>
+
+<dt><a name = "abolish"></a><code>abolish(F,A)</code>
+<dd>Remove all clauses with functor <code>F</code> and arity <code>A</code> from the database.<p>
+
+<dt><a name = "clause"></a><code>clause(X,V)</code>
+<dd>Find a clause in the database whose head (left hand side) matches <code>X</code> and whose body (right hand side) matches <code>V</code>.  To find a base clause, use <code>true</code> for <code>V</code>.<p>
+
+<dt><a name = "save"></a><code>save(F)</code>
+<dd>Save the entire program state on File <code>F (usu. as a binary image)</code>.<p>
+
+<dt><a name = "restore"></a><code>restore(F)</code>
+<dd>Replace the program state with the one on File <code>F</code>.<p>
+</dl>
+
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-control.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=right>
+  <a href="prolog-arithmetic.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+</div>
+</body>
+</html>

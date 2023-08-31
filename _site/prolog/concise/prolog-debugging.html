@@ -1,0 +1,85 @@
+<html>
+<head><title>Prolog: Listing and Debugging Predicates</title>
+</head>
+<body bgcolor=white>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<div class="container" style="padding:60px;">
+
+<p><a href="./">< go back</a></p>
+<h3>Listing and debugging predicates.</h3>
+<dl>
+<dt><a name = "listing"></a><code>listing(P)</code>
+<dd>Display predicate <code>P</code>.  <code>P</code> may be a predicate name, a structure of the form <code>Name/Arity</code>, or a bracked list of the above.<p>
+
+<dt><a name = "trace"></a><code>trace</code>
+<dd>Turn on tracing.<p>
+
+<dt><a name = "notrace"></a><code>notrace</code>
+<dd>Turn off tracing.<p>
+
+<dt><a name = "spy"></a><code>spy P</code>
+<dd>Turn on tracing when predicate <code>P</code> is called.  <code>P</code> may be a predicate name, a structure of the form <code>Name/Arity</code>, or a non-bracked list of the above.<p>
+
+<dt><a name = "nospy"></a><code>nospy P</code>
+<dd>Turn off spying for <code>P</code>.<p>
+
+<dt><a name = "nospyall"></a><code>nospyall</code>
+<dd>Turn off all spypoints.<p>
+
+<dt><a name = "debug"></a><code>debug</code>
+<dd>Enable spypoints (allow them to initiate tracing.).<p>
+
+<dt><a name = "nodebug"></a><code>nodebug</code>
+<dd>Disable spypoints (without removing them).<p>
+</dl>
+<hr>
+Control over <a name = "control">tracing</a> is very system-dependent, but is probably like this:
+<dl>
+<dt>&lt;return&gt;
+<dd>Single-step to next line of trace.<p>
+
+<dt><code>h</code>
+<dd>Provide help on tracing commands.<p>
+
+<dt><code>s</code>
+<dd>(On a CALL)  Skip over this call.<p>
+
+<dt><code>l</code>
+<dd>Leap without tracing to the next spypoint.<p>
+
+<dt><code>n</code>
+<dd>Turn off tracing.<p>
+
+<dt><code>+</code>
+<dd>Set a spypoint here.<p>
+
+<dt><code>-</code>
+<dd>Remove the spypoint here.<p>
+</dl>
+
+<b>Trace terminology:</b> CALL is the initial entry to a predicate;
+EXIT is a successful return; REDO is when it is backed into for
+another answer; FAIL is when it finds no more solutions.  A sequence
+of calls may be viewed as forming a chain.<p>
+
+<center><img src = "chain.gif"></center>
+<p>
+
+
+<table width=100%><tr>
+<td align=left>
+  <a href="prolog-arithmetic.html">
+  <img src="left-arrow.gif" border=0 alt="Previous page"><br></a></td>
+<td align=right>
+  <a href="prolog-tests.html">
+  <img src="right-arrow.gif" border=0 alt="Next page"</a></td>
+</tr></table>
+
+<hr>
+<i>Copyright &copy; 1995 by David Matuszek<br>
+All rights reserved.<br></i>
+Last updated July 15, 1995
+</div>
+</body>
+</html>

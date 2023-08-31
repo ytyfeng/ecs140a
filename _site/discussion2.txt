@@ -1,0 +1,40 @@
+Discussion 2 Aug 17 2023    tyfeng.com/ecs140a
+
+1. Left most derivation for A = A * (B + (C * A)) using the following grammar:
+	<assign> -> <id> = <expr>
+	<id> -> A | B | C
+	<expr> -> <id> + <expr>
+	       	 | <id> * <expr>
+		 | ( <expr> )
+		 | <id>
+
+Left most derivation: left most non-terminal gets replaced first
+
+<assign> => <id> = <expr>
+	 => A = <expr>
+	 =>
+
+
+2. BNF to EBNF:
+
+BNF:
+<program> -> begin <stmt_list> end
+<stmt_list> -> <stmt>
+	    | <stmt>; <stmt_list>
+<stmt> -> <var> = <expression>
+<var> -> A | B | C
+<expression> -> <var> + <var>
+	     | <var> - <var>
+	     | <var>
+
+
+EBNF:
+[] optional
+{} can be repeated 0 or more times
+(  + | -  ) multiple choice
+
+
+
+
+
+
