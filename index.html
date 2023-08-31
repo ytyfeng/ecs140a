@@ -9,7 +9,7 @@ Here you will find code and resources for Discussion.
 {% assign doclist = site.static_files | sort: 'url'  %}
        {% for doc in doclist %}
        <div style="display: flex; justify-content: space-between;">
-            <div style="text-align: left;"><a href="{{ doc.path }}">{{ doc.path }}</a></div>
+            <div style="text-align: left;"><a href="./{{ doc.path }}">{{ doc.path }}</a></div>
        		<div style="text-align: right;">{{ doc.modified_time }}</div>
     	</div>
     	{% endfor %}
